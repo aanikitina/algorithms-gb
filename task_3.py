@@ -9,7 +9,7 @@ SIZE = 10
 MAX_LIMIT = 100
 MIN_LIMIT = 0
 
-numbers = [random.randint(MIN_LIMIT, MAX_LIMIT + 1) for _ in range(SIZE)]
+numbers = [random.randint(MIN_LIMIT, MAX_LIMIT) for _ in range(SIZE)]
 
 max_id = 0
 min_id = 0
