@@ -21,9 +21,10 @@ MIN_LIMIT = 0
 
 numbers = [random.randint(MIN_LIMIT, MAX_LIMIT) for _ in range(SIZE)]
 
+# Будет найден индекс первого встретившегося максимального/минимального элемента, если таких в массиве несколько
 max_id = 0
 min_id = 0
-for i in range(1, SIZE): # начинать с 0 элемента не нужно, тк это значение присвоено по умолчанию
+for i in range(1, SIZE):  # начинать с 0 элемента не нужно, тк это значение присвоено по умолчанию
     if numbers[i] > numbers[max_id]:
         max_id = i
     if numbers[i] < numbers[min_id]:
