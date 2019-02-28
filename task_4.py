@@ -23,6 +23,6 @@ for number in numbers_unique:
     if freq > max_freq:
         max_freq = freq
         most_freq = number
-        print(f'new max freq {freq}, {number}')
+
 print(f'Заданный массив: {numbers}')
 print(f'Чаще всего встречается число {most_freq}. {max_freq} раз(а).')
