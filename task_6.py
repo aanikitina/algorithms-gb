@@ -31,7 +31,7 @@ for i in range(1, SIZE): # начинать с 0 элемента не нужн�
 
 print(f'Максимальный элемент: {numbers[max_id]}, минимальный: {numbers[min_id]}')
 
-if (min_id - max_id == abs(-1)):
+if min_id - max_id == abs(-1):
     print(f'Минимальный и максимальный элементы - соседние, Сумма = 0')
 elif max_id > min_id:
     print(f'Сумма = {interval_sum(min_id, max_id, numbers)}')
