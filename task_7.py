@@ -9,7 +9,7 @@ import random
 
 SIZE = 10
 MAX_LIMIT = 10
-MIN_LIMIT = 0
+MIN_LIMIT = -10
 
 numbers = [random.randint(MIN_LIMIT, MAX_LIMIT) for _ in range(SIZE)]
 
