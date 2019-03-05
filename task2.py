@@ -33,8 +33,8 @@ add_prev = []
 
 
 
-a_number = list('a2')
-b_number = list('cf4')
+a_number = list('ff')
+b_number = list('aff')
 
 a_d = deque(a_number)
 b_d = deque(b_number)
@@ -55,16 +55,12 @@ for i in range(len(a_d)+1):
     print(res)
     if len(add_prev) > 0:
         # res = list(sum_matrix[matrix_index_dict[add_prev.pop()]][matrix_index_dict[res]]) # проблемка, res тоже двузначный может быть
-        res = DIGITS[matrix_index_dict[res] + 1] # костыль
+        res = list(DIGITS[matrix_index_dict[res.pop()] + 1]) # костыль
         print(f'перенесли разряд {res}')
 
     sum_res.appendleft(res.pop())
 
-
-
     print(sum_res)
-
-
 
     if len(res) > 0:
         add_prev = list(res.pop())
@@ -73,5 +69,6 @@ for i in range(len(a_d)+1):
         add_prev = []
         print('обнулили add_prev')
 
+print(f'Сумма: {sum_res}')
 
 
