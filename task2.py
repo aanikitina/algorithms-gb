@@ -117,6 +117,7 @@ def numbers_mult(a_number, b_number):
     return list(mult_res)
 
 
+# Быстрая проверка вычислений
 def test_operations():
     import random
     exitcode = 0
@@ -141,6 +142,8 @@ def test_operations():
     print(f'exitcode {exitcode}')
     return
 
+
+# Долго, но, вроде, надежно проверяет вычисления. На случай наступления паранойи.
 def test_operations_full():
     exitcode = 0
     for i in range(1000):
