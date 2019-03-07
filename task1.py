@@ -27,15 +27,14 @@ winners = []
 mediums = []
 for firm in firms:
     if firm.year_product < mean_year_product:
-        #firm.looser_flag = 1  # разобраться с переопределением параметров
+        firm._replace(looser_flag=1)
         loosers.append(firm.name)
     elif firm.year_product > mean_year_product:
-        #firm.looser_flag = 0
+        firm._replace(looser_flag=0)
         winners.append(firm.name)
     else:
         mediums.append(firm.name)
 
-print(f'Прибыль выше общей среднегодовой прибыли: {", ".join(winners)}')
-print(f'Прибыль ниже общей среднегодовой прибыли: {", ".join(loosers)}')
-if len(mediums) > 0:
-    print(f'Прибыль равна общей среднегодовой прибыли: {", ".join(mediums)}')
+print(f'Прибыль выше общей среднегодовой прибыли: {", ".join(winners)}') if len(loosers) > 0 else None
+print(f'Прибыль ниже общей среднегодовой прибыли: {", ".join(loosers)}') if len(winners) > 0 else None
+print(f'Прибыль равна общей среднегодовой прибыли: {", ".join(mediums)}') if len(mediums) > 0 else None
