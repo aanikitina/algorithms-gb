@@ -54,33 +54,26 @@ def numbers_sum(a_number, b_number):
             a = MATRIX_INDEX_DICT[a_d.pop()]
         else:
             a = 0
-        if len(b_d) >0:
+        if len(b_d) > 0:
             b = MATRIX_INDEX_DICT[b_d.pop()]
         else:
             b = 0
 
-        # print(a,b)
-
         res = list(SUM_MATRIX[a][b])
-        # print(res)
-        if len(add_prev) > 0:
-            # res = list(sum_matrix[matrix_index_dict[add_prev.pop()]][matrix_index_dict[res]]) # проблемка, res тоже двузначный может быть
-            # print(f'ATTENTION {res}')
-            res = list(DIGITS[DIGITS.index(''.join(res)) + 1]) # костыль
 
-            # print(f'перенесли разряд {res}')
+        # сдвиг в строке DIGITS влево, эквивалентен переносу 1 с предыдущего разряда, больше единицы не переносится
+        if len(add_prev) > 0:
+            res = list(DIGITS[DIGITS.index(''.join(res)) + 1]) # костыль
 
         sum_res.appendleft(res.pop())
 
-        # print(sum_res)
-
+        # запоминание переноса на следующий разряд
         if len(res) > 0:
             add_prev = list(res.pop())
-            # print(f'add_prev {add_prev}')
         else:
             add_prev = []
-            # print('обнулили add_prev')
 
+    # обрезаем лишний ноль в начале
     if sum_res[0] == '0':
         sum_res.popleft()
 
@@ -91,29 +84,25 @@ def numbers_sum(a_number, b_number):
 def numbers_mult(a_number, b_number):
 
     mult_res = []
-    res = []
-    add_prev = []
-
     a_d = deque(a_number)
 
     for i in range(len(a_d)):
-
         a = MATRIX_INDEX_DICT[a_d.pop()]
         res = []
         b_d = deque(b_number)
+
         for j in range(len(b_d)):
             b = MATRIX_INDEX_DICT[b_d.pop()]
-            res = numbers_sum(list(MULT_MATRIX[a][b]) + ['0'] * j, res)
-        # print(f'res {res}')
+            res = numbers_sum(list(MULT_MATRIX[a][b]) + ['0'] * j, res)  # промежуточное слагаемое, цифра а * b_number
 
         mult_res = numbers_sum(res + ['0'] * i, mult_res)
-        # print(f'mult_res {mult_res}')
 
     mult_res = deque(mult_res)
 
+    # убираем лишние нули слева (в случае умножения может быть и не один)
     while (mult_res[0] == '0') and (mult_res != deque(['0'])):
         mult_res.popleft()
-        # print(f'multres {mult_res}')
+
     return list(mult_res)
 
 
@@ -125,11 +114,7 @@ def test_operations():
     for i in range(1000):
 
         a, b = random.randint(0, 1000), random.randint(0, 1000)
-        # a, b = 110, 289
         ahex, bhex = map(hex, [a, b])
-
-        # print(a, b)
-
 
         if list(numbers_sum(list(ahex)[2:], list(bhex)[2:])) != list(hex(a + b))[2:]:
             print(f'SUM FAILED {ahex}, {bhex}')
@@ -149,10 +134,7 @@ def test_operations_full():
     for i in range(1000):
         for j in range(100):
             a, b = i, j
-            # a, b = 110, 289
             ahex, bhex = map(hex, [a, b])
-
-            # print(a, b)
 
             if list(numbers_sum(list(ahex)[2:], list(bhex)[2:])) != list(hex(a + b))[2:]:
                 print(f'SUM FAILED {ahex}, {bhex}')
@@ -164,7 +146,6 @@ def test_operations_full():
 
     print(f'exitcode {exitcode}')
     return
-
 
 
 DIGITS, SUM_MATRIX, MATRIX_INDEX_DICT = prepare_sum_utils()
