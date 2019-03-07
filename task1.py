@@ -27,10 +27,10 @@ winners = []
 mediums = []
 for firm in firms:
     if firm.year_product < mean_year_product:
-        firm._replace(looser_flag=1)
+        firm = firm._replace(looser_flag=1)
         loosers.append(firm.name)
     elif firm.year_product > mean_year_product:
-        firm._replace(looser_flag=0)
+        firm = firm._replace(looser_flag=0)
         winners.append(firm.name)
     else:
         mediums.append(firm.name)
