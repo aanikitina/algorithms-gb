@@ -121,25 +121,6 @@ def implementation3(storage):
     print(f'Even number ids: {evens}')
 
 
-def implementation4(storage):
-
-    numbers = set([random.randint(N_MIN_LIMIT, N_MAX_LIMIT) for _ in range(SIZE)])
-
-    odds = ()
-    evens = ()
-
-    for i in range(SIZE):
-        if (numbers[i] % 2) == 0:
-            odds = odds + (i,)
-        else:
-            evens = evens + (i,)
-
-    get_size_multiple([numbers, odds, evens, i], storage)
-
-    print(numbers)
-    print(f'Odd number ids: {odds}')
-    print(f'Even number ids: {evens}')
-
 
 print(f'System: {platform.platform()}')
 print(f'Python version: {platform.python_version()}')
