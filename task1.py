@@ -144,7 +144,7 @@ def implementation4(storage):
 print(f'System: {platform.platform()}')
 print(f'Python version: {platform.python_version()}')
 
-print('Implementation1:')
+print('Implementation1:') # массивы
 random.seed(123456)
 storage = []
 get_size_multiple([SIZE, N_MAX_LIMIT, N_MIN_LIMIT], storage)
@@ -152,7 +152,7 @@ implementation1(storage)
 get_storage_info(storage)
 
 
-print('Implementation2:')
+print('Implementation2:') # вместо исходного массива создается кортеж
 random.seed(123456)
 storage = []
 get_size_multiple([SIZE, N_MAX_LIMIT, N_MIN_LIMIT], storage)
@@ -160,7 +160,7 @@ implementation2(storage)
 get_storage_info(storage)
 
 
-print('Implementation3:')
+print('Implementation3:') # вместо всех массивов используются кортежи
 random.seed(123456)
 storage = []
 get_size_multiple([SIZE, N_MAX_LIMIT, N_MIN_LIMIT], storage)
@@ -191,22 +191,31 @@ get_storage_info(storage)
 #  MacBook-Pro-Anastasia:algorithms anastasia$ python task1.py
 # System: Darwin-18.2.0-x86_64-i386-64bit
 # Python version: 3.6.8
+
+
 # Implementation1:
 # [4745, 482, 2861, 36, 1262, 835, 4399, 465, 1907, 3752]
 # Odd number ids: [1, 3, 4, 9]
 # Even number ids: [0, 2, 5, 6, 7, 8]
+
 # Sum of sizes in storage: 1080
 # There are 27 items in storage, 25 unique items. Size of unique = 1028.
+
+
 # Implementation2:
 # (4745, 482, 2861, 36, 1262, 835, 4399, 465, 1907, 3752)
 # Odd number ids: [1, 3, 4, 9]
 # Even number ids: [0, 2, 5, 6, 7, 8]
+
 # Sum of sizes in storage: 1016
 # There are 27 items in storage, 25 unique items. Size of unique = 964.
+
+
 # Implementation3:
 # (4745, 482, 2861, 36, 1262, 835, 4399, 465, 1907, 3752)
 # Odd number ids: (1, 3, 4, 9)
 # Even number ids: (0, 2, 5, 6, 7, 8)
+
 # Sum of sizes in storage: 968
 # There are 27 items in storage, 25 unique items. Size of unique = 916.
 
